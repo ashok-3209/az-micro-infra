@@ -1,23 +1,23 @@
 infra_config = {
   resource_groups = {
-    "rg-micro-prod" = {
+    "az-rg-aks-micro-dev01" = {
       location = "East US"
       tags     = { Environment = "Dev", ManagedBy = "Terraform" }
     }
   }
   container_registries = {
-    "acrmicrodev567" = {
-      rg_key = "rg-micro-prod"
+    "azacrmicro01" = {
+      rg_key = "az-rg-aks-micro-dev01"
       sku    = "Basic"
     }
   }
   kubernetes_clusters = {
-    "aks-micro-dev" = {
-      rg_key     = "rg-micro-prod"
+    "az-aks-micro-dev01" = {
+      rg_key     = "az-rg-aks-micro-dev01"
       dns_prefix = "aksmicrodev"
       default_node_pool = {
         name       = "default"
-        node_count = 2
+        node_count = 1
         vm_size    = "Standard_B2s"
       }
     }
