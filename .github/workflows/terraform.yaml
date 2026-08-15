@@ -37,7 +37,7 @@ jobs:
         run: terraform fmt -check -diff -recursive
 
       - name: Validate Terraform Configuration (${{ matrix.environment }})
-        working-directory: ./environment/${{ matrix.environment }}
+        working-directory: ./environments/${{ matrix.environment }}
         run: |
           terraform init -backend=false
           terraform validate
@@ -71,7 +71,7 @@ jobs:
           terraform_version: "1.7.0"
 
       - name: Initialize Terraform
-        working-directory: ./environment/${{ matrix.environment }}
+        working-directory: ./environments/${{ matrix.environment }}
         run: terraform init
 
       - name: Run Terraform Plan
