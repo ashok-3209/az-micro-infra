@@ -1,4 +1,4 @@
-name: "Terraform CI/CD Pipeline for Azure AKS"
+name: "Terraform CI/CD Pipeline for AKS"
 
 on:
   push:
@@ -76,7 +76,7 @@ jobs:
 
       - name: Run Terraform Plan
         id: plan
-        working-directory: ./environment/${{ matrix.environment }}
+        working-directory: ./environments/${{ matrix.environment }}
         run: |
           terraform plan -no-color -out=tfplan
 
@@ -134,10 +134,10 @@ jobs:
           terraform_version: "1.7.0"
 
       - name: Initialize Terraform
-        working-directory: ./environment/${{ matrix.environment }}
+        working-directory: ./environments/${{ matrix.environment }}
         run: terraform init
 
       - name: Apply Terraform Configuration
-        working-directory: ./environment/${{ matrix.environment }}
+        working-directory: ./environments/${{ matrix.environment }}
         run: terraform apply -auto-approve
 
